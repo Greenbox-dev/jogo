@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>Tripulação — Jogo 2D</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="brand">
+      <div class="brand-icon">✦</div>
+      <div>
+        <p class="eyebrow">JOGO MULTIPLAYER 2D</p>
+        <h1>TRIPULAÇÃO</h1>
+      </div>
+    </header>
+
+    <section id="home-screen" class="panel">
+      <p class="eyebrow">PRONTO PARA JOGAR?</p>
+      <h2>Entre na partida</h2>
+      <label for="player-name">Seu apelido</label>
+      <input id="player-name" maxlength="16" placeholder="Digite seu apelido" autocomplete="nickname">
+
+      <div class="actions">
+        <button id="create-button" class="button primary">Criar sala</button>
+      </div>
+
+      <div class="separator"><span>OU ENTRE COM UM CÓDIGO</span></div>
+      <label for="room-code">Código da sala</label>
+      <input id="room-code" maxlength="5" placeholder="EX: A7K2P" autocomplete="off">
+      <button id="join-button" class="button secondary">Entrar na sala</button>
+      <p id="home-message" class="message" role="status"></p>
+    </section>
+
+    <section id="lobby-screen" class="panel hidden">
+      <div class="lobby-heading">
+        <div>
+          <p class="eyebrow">SALA DE ESPERA</p>
+          <h2>Sua equipe</h2>
+        </div>
+        <div class="room-code-box">
+          <span>CÓDIGO DA SALA</span>
+          <strong id="room-code-display">-----</strong>
+        </div>
+      </div>
+      <p class="muted">Compartilhe o código com seus amigos para eles entrarem.</p>
+      <div class="player-count"><strong id="player-count">1</strong> / 10 jogadores</div>
+      <ul id="player-list" class="player-list"></ul>
+      <p id="lobby-message" class="message" role="status">Aguardando jogadores...</p>
+      <button id="start-button" class="button primary hidden">Iniciar partida</button>
+      <button id="leave-button" class="button secondary">Sair da sala</button>
+    </section>
+
+    <section id="game-screen" class="panel hidden">
+      <p class="eyebrow">PRIMEIRA VERSÃO</p>
+      <h2>Partida iniciada!</h2>
+      <p>O sistema de salas está funcionando. Na próxima etapa vamos construir o mapa 2D, os personagens e a movimentação.</p>
+      <div id="game-players" class="game-players"></div>
+    </section>
+
+    <footer>
+      <span>Até 10 jogadores por sala</span>
+      <span>•</span>
+      <span>Multiplayer pela rede local</span>
+    </footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
